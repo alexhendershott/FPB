@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "NoPolitics - Remove Politics from Facebook",
+  "description": "This extension will find Facebook posts that are associated with politics and apply additional css on those posts.",
+  "version": "1.0",
+
+  "content_scripts": [{
+    "css": ["styles.css"],
+    "js": ["content.js"],
+    "js": [ "jquery.min.js", "content.js" ],
+    "matches": ["https://www.facebook.com/*"]
+  }]
+
+}
