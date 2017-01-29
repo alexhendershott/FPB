@@ -1,3 +1,3 @@
-# Create a Chrome extension to modify a website's HTML or CSS
+# ExtensionFPB - Remove Politics from Facebook
 
-See post: https://blog.lateral.io/2016/04/create-chrome-extension-modify-websites-html-css/
+https://chrome.google.com/webstore/detail/fpb-remove-politics-from/jilchiamacpaedkmjfngobdapeoajgcd
