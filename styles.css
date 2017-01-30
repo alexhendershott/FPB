@@ -75,6 +75,7 @@
 .actions {
   float: right;
   margin-right: 18px;
+  position: relative;
 }
 
 .actions a {
@@ -215,9 +216,7 @@ input[type="radio"] {
   height: 142px;
   position: absolute;
   z-index: 9999;
-  top: 34px;
   width: 100px;
-  right: 130px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
   border-radius: 4px;
   color: #333;
@@ -225,6 +224,8 @@ input[type="radio"] {
   line-height: 15px;
   text-align: center;
   display: none;
+  right: -10px;
+  top: 28px;
 }
 
 .tip-title {
