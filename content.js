@@ -1,8 +1,5 @@
 // Array for Political Keywords to Block
-var arr = [
-'Trump', 'Trümp', 'Obama', 'Hillary', 'Clinton', 'Bush', 'Politics', 'politics', 'political',
-'President', 'Democrat', 'Republican', 'Democrats', 'Republicans', 'Pence'
-];
+var regex = new RegExp(/(Trump|Hilary|Bush|Clinton|Democrat|Republican)/igm);
 
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
@@ -16,13 +13,10 @@ $(document).ready(function() {
     console.log("HC");
     $("#switch-off").prop( "checked", true );
 
-    var i=0;
-    for (; i<arr.length; i++) {
-      $("div:contains('"+arr[i]+"')").each(function() {
-        $(this).closest('div.userContentWrapper').addClass('hidden-post');
-        $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
-      });
-    }
+    $("div").filter(function () {
+      $(this).closest('div.userContentWrapper').addClass('hidden-post');
+      $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+    });
   }
 
   // Blur Posts and Set Switch Position
@@ -31,13 +25,10 @@ $(document).ready(function() {
     console.log("BC");
     $("#switch-on").prop( "checked", true );
 
-    var i=0;
-    for (; i<arr.length; i++) {
-      $("div:contains('"+arr[i]+"')").each(function() {
-        $(this).closest('div.userContentWrapper').addClass('blurred-post');
-        $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
-      });
-    }
+    $("div").filter(function () {
+      $(this).closest('div.userContentWrapper').addClass('blurred-post');
+      $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+    });
   }
 
   // Setup Switch and Adjust CSS to Position
@@ -75,26 +66,20 @@ function doThisStuffOnScroll() {
 
     var a = readCookie('hidecookie')
     if (a) {
-      var i=0;
-      for (; i<arr.length; i++) {
-        $("div:contains('"+arr[i]+"')").each(function() {
-          $(this).closest('div.userContentWrapper').removeClass('blurry-post');
-          $(this).closest('div.userContentWrapper').addClass('hidden-post');
-          $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
-        });
-      }
+      $("div").filter(function () {
+        $(this).closest('div.userContentWrapper').removeClass('blurry-post');
+        $(this).closest('div.userContentWrapper').addClass('hidden-post');
+        $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+      });
     }
 
     var b = readCookie('blurrycookie')
     if (b) {
-      var i=0;
-      for (; i<arr.length; i++) {
-        $("div:contains('"+arr[i]+"')").each(function() {
-          $(this).closest('div.userContentWrapper').removeClass('hidden-post');
-          $(this).closest('div.userContentWrapper').addClass('blurred-post');
-          $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
-        });
-      }
+      $("div").filter(function () {
+        $(this).closest('div.userContentWrapper').removeClass('hidden-post');
+        $(this).closest('div.userContentWrapper').addClass('blurred-post');
+        $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+      });
     }
 }
 // Timeout and Function to do Stuff After User has Scrolled
