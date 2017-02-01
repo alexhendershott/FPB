@@ -1,69 +1,73 @@
 // Array for Political Keywords to Block
 var arr = [
 'Trump', 'Trümp', 'Obama', 'Hillary', 'Clinton', 'Bush', 'Politics', 'politics', 'political',
-'President', 'Democrat', 'Republican', 'Democrats', 'Republicans', 'Pence'
+'President', 'Democrat', 'Republican', 'Democrats', 'Republicans', 'Pence', 'White House', 'Immigration', 'immigration',
+'Melania', 'Ivanka', 'U.S.', 'House of Representatives', 'Constitution', 'Green Card', 'Supreme Court', 'Government',
+'government'
 ];
 
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
 
   // Temporary Fix to Blocked Logins
-  if ($('body').hasClass('home')) {
-    // Create Action Bar
-    $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
+  if ($('body').hasClass('home') ||
+      $('body').hasClass('timelineLayout')) {
 
-    // Hide Posts and Set Switch Position
-    var x = readCookie('hidecookie')
-    if (x) {
-      console.log("HC");
-      $("#switch-off").prop( "checked", true );
+      // Create Action Bar
+      $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
 
-      var i=0;
-      for (; i<arr.length; i++) {
-        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
-          $(this).closest('div.userContentWrapper').addClass('hidden-post');
-          $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
-        });
+      // Hide Posts and Set Switch Position
+      var x = readCookie('hidecookie')
+      if (x) {
+        // console.log("HC");
+        $("#switch-off").prop( "checked", true );
+
+        var i=0;
+        for (; i<arr.length; i++) {
+          $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
+            $(this).closest('div.userContentWrapper').addClass('hidden-post');
+            $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+          });
+        }
       }
-    }
 
-    // Blur Posts and Set Switch Position
-    var y = readCookie('blurrycookie')
-    if (y) {
-      console.log("BC");
-      $("#switch-on").prop( "checked", true );
+      // Blur Posts and Set Switch Position
+      var y = readCookie('blurrycookie')
+      if (y) {
+        // console.log("BC");
+        $("#switch-on").prop( "checked", true );
 
-      var i=0;
-      for (; i<arr.length; i++) {
-        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
-          $(this).closest('div.userContentWrapper').addClass('blurred-post');
-          $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
-        });
+        var i=0;
+        for (; i<arr.length; i++) {
+          $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
+            $(this).closest('div.userContentWrapper').addClass('blurred-post');
+            $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+          });
+        }
       }
-    }
 
-    // Setup Switch and Adjust CSS to Position
-    $(".switch").click(function() {
-      var f = readCookie('hidecookie')
-      var u = readCookie('blurrycookie')
-      if (f) {
-        createCookie('hidecookie','hidecookie',-1);
-        createCookie('blurrycookie','blurrycookie',7);
-        $('.hidden-post').css({'display': 'block', 'filter': 'blur(5px)', 'opacity': '.3'});
-        $('.blurred-post').css({'display': 'block', 'filter': 'blur(5px)', 'opacity': '.3'});
-      }
-      if (u) {
-        createCookie('blurrycookie','blurrycookie',-1);
-        createCookie('hidecookie','hidecookie',7);
-        $('.hidden-post').css({'display': 'none'});
-        $('.blurred-post').css({'display': 'none'});
-      }
-    });
+      // Setup Switch and Adjust CSS to Position
+      $(".switch").click(function() {
+        var f = readCookie('hidecookie')
+        var u = readCookie('blurrycookie')
+        if (f) {
+          createCookie('hidecookie','hidecookie',-1);
+          createCookie('blurrycookie','blurrycookie',7);
+          $('.hidden-post').css({'display': 'block', 'filter': 'blur(5px)', 'opacity': '.3'});
+          $('.blurred-post').css({'display': 'block', 'filter': 'blur(5px)', 'opacity': '.3'});
+        }
+        if (u) {
+          createCookie('blurrycookie','blurrycookie',-1);
+          createCookie('hidecookie','hidecookie',7);
+          $('.hidden-post').css({'display': 'none'});
+          $('.blurred-post').css({'display': 'none'});
+        }
+      });
 
-    // Make Alex Rich
-    $(".tip").click(function() {
-      $(".tip-window").toggle();
-    });
+      // Make Alex Rich
+      $(".tip").click(function() {
+        $(".tip-window").toggle();
+      });
   }
 
 });

@@ -4,7 +4,7 @@
   "name": "FPB - Remove Politics from Facebook",
   "short_name": "FPB",
   "description": "This extension will find Facebook posts that are associated with politics and allow you to hide or blur them from view.",
-  "version": "0.2.2",
+  "version": "0.2.3",
 
   "icons": {
     "16": "icon-16.png",
