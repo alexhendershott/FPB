@@ -6,7 +6,7 @@ var arr = [
 
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
-  
+
   // Temporary Fix to Blocked Logins
   if ($('body').hasClass('home')) {
     // Create Action Bar
@@ -20,7 +20,7 @@ $(document).ready(function() {
 
       var i=0;
       for (; i<arr.length; i++) {
-        $("div:contains('"+arr[i]+"')").each(function() {
+        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
           $(this).closest('div.userContentWrapper').addClass('hidden-post');
           $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
         });
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
       var i=0;
       for (; i<arr.length; i++) {
-        $("div:contains('"+arr[i]+"')").each(function() {
+        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
           $(this).closest('div.userContentWrapper').addClass('blurred-post');
           $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
         });
@@ -80,7 +80,7 @@ function doThisStuffOnScroll() {
     if (a) {
       var i=0;
       for (; i<arr.length; i++) {
-        $("div:contains('"+arr[i]+"')").each(function() {
+        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
           $(this).closest('div.userContentWrapper').removeClass('blurry-post');
           $(this).closest('div.userContentWrapper').addClass('hidden-post');
           $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
@@ -92,7 +92,7 @@ function doThisStuffOnScroll() {
     if (b) {
       var i=0;
       for (; i<arr.length; i++) {
-        $("div:contains('"+arr[i]+"')").each(function() {
+        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
           $(this).closest('div.userContentWrapper').removeClass('hidden-post');
           $(this).closest('div.userContentWrapper').addClass('blurred-post');
           $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
