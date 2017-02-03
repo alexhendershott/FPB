@@ -18,7 +18,7 @@
   left: 0;
   z-index: 10;
   width: 100%;
-  background: #304a80;
+  background: #2f4b85;
   height: auto;
   padding: 6px;
   border-radius: 0px 4px 4px 0px;
@@ -56,6 +56,33 @@
   margin-right: 10px;
 }
 
+.cog {
+  background: url("https://s3.amazonaws.com/nopolitics-public/cog.svg") no-repeat 10px 2px;
+  display: block;
+  float: left;
+  margin-left: 38px;
+  height: 28px;
+  width: 37px;
+  background-size: 60%;
+  opacity: .8;
+}
+
+.cog-active {
+  background: url("https://s3.amazonaws.com/nopolitics-public/cog-active.svg") no-repeat 10px 2px;
+  display: block;
+  float: left;
+  margin-left: 38px;
+  height: 28px;
+  width: 37px;
+  background-size: 60%;
+  opacity: 1;
+}
+
+.cog:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .layout {
   width: 1032px;
   margin: 0 auto;
@@ -72,13 +99,17 @@
   min-width: 1016px;
 }
 
-.actions {
+body.timelineLayout #contentCol {
+  margin-top: 20px;
+}
+
+.navbar-actions {
   float: right;
   margin-right: 18px;
   position: relative;
 }
 
-.actions a {
+.navbar-actions a {
   color: white;
   text-decoration: none;
 }
@@ -198,17 +229,17 @@ input[type="radio"] {
 
 .tip {
   float: left;
-  margin-left: 40px;
+  margin-left: 5px;
 }
 
 .tip:hover {
   cursor: pointer;
 }
 
-.tip span {
-  font-size: 18px;
+.tip span, .cog span {
+  font-size: 16px;
   color: transparent;
-  border-left: 1px solid #233967;
+  border-left: 1px solid #294174;
 }
 
 .tip-window {
@@ -226,6 +257,46 @@ input[type="radio"] {
   display: none;
   right: -10px;
   top: 28px;
+}
+
+.cog-window {
+  background: white;
+  height: 142px;
+  position: absolute;
+  z-index: 9999;
+  width: 200px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+  border-radius: 4px;
+  color: #333;
+  padding: 16px 20px 16px 20px;
+  line-height: 15px;
+  text-align: center;
+  display: none;
+  right: 26px;
+  top: 28px;
+}
+
+.cog-window input[type=text] {
+  height: 25px;
+  padding-left: 8px;
+  width: 186px;
+  outline: none;
+  margin-top: 4px;
+  border: 1px solid #dfdfdf;
+}
+
+.cog-window input[type=text]:focus {
+  border: 1px solid #4080ff;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(64,128,255,.8);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(64,128,255,.8);
+  box-shadow: 0px 0px 5px 0px rgba(64,128,255,.8);
+}
+
+.cog-window #add-btn {
+  color: #5d92ff;
+  position: absolute;
+  right: 30px;
+  top: 65px;
 }
 
 .tip-title {

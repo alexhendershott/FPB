@@ -9,12 +9,24 @@ var arr = [
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
 
+  var hiddencookie = readCookie('hidecookie');
+  var blurrycookie = readCookie('blurrycookie');
+
+  console.log(hiddencookie);
+  console.log(blurrycookie);
+
+  if ((hiddencookie) == null) {
+    if ((blurrycookie) == null) {
+      createCookie('hidecookie','hidecookie',7);
+    }
+  }
+
   // Temporary Fix to Blocked Logins
   if ($('body').hasClass('home') ||
       $('body').hasClass('timelineLayout')) {
 
       // Create Action Bar
-      $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
+      $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='navbar-actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='cog'></span><span>|</span></div> <div class='cog-window'> <span class='tip-title'>Blocked Keywords</span> <span class='tip-subtitle'>Add or remove a keyword below.</span> <input type='text' id='name' placeholder='New Keyword'> <a href='#' id='add-btn'>Add</a> <ul id='list'> </ul> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
 
       // Hide Posts and Set Switch Position
       var x = readCookie('hidecookie')
@@ -67,6 +79,12 @@ $(document).ready(function() {
       // Make Alex Rich
       $(".tip").click(function() {
         $(".tip-window").toggle();
+      });
+
+      // Settings Cog
+      $(".cog").click(function() {
+        $(this).toggleClass("cog-active");
+        $(".cog-window").toggle();
       });
   }
 
