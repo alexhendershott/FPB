@@ -9,6 +9,9 @@ var arr = [
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
 
+  var hiddencookie = readCookie('hidecookie');
+  var blurrycookie = readCookie('blurrycookie');
+
   if ((hiddencookie) == null) {
     if ((blurrycookie) == null) {
       createCookie('hidecookie','hidecookie',7);
