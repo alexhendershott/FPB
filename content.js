@@ -9,6 +9,12 @@ var arr = [
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
 
+  if ((hiddencookie) == null) {
+    if ((blurrycookie) == null) {
+      createCookie('hidecookie','hidecookie',7);
+    }
+  }
+
   // Temporary Fix to Blocked Logins
   if ($('body').hasClass('home') ||
       $('body').hasClass('timelineLayout')) {
