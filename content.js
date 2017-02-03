@@ -1,10 +1,5 @@
 // Array for Political Keywords to Block
-var arr = [
-'Trump', 'Trümp', 'Obama', 'Hillary', 'Clinton', 'Bush', 'Politics', 'politics', 'political',
-'President', 'Democrat', 'Republican', 'Democrats', 'Republicans', 'Pence', 'White House', 'Immigration', 'immigration',
-'Melania', 'Ivanka', 'U.S.', 'House of Representatives', 'Constitution', 'Green Card', 'Supreme Court', 'Government',
-'government'
-];
+var arr = localStorage["tasks"];
 
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
@@ -84,6 +79,56 @@ $(document).ready(function() {
         $(".cog-window").toggle();
       });
   }
+
+  function appendTaskToList(val) {
+    $('#list').append("<li>" + val + "  <a href='#' class='cancel-btn'>+</a></li>");
+  }
+
+
+  if (localStorage['tasks']) {
+      var tasks = JSON.parse(localStorage['tasks']);
+  }else {
+      var tasks = [];
+  }
+
+  for(var i=0;i<tasks.length;i++) {
+      appendTaskToList(tasks[i]);
+  }
+
+  var addTask = function(){
+      // get value from #name input
+      var val = $('#name').val();
+
+      // add the task to the array
+      tasks.push(val);
+
+      // save to local storage
+      localStorage["tasks"] = JSON.stringify(tasks);
+
+      // append the name to the list
+      appendTaskToList(val);
+
+      // reset the input field and focus it.
+      $('#name').val("").focus();
+  }
+
+  $('#add-btn').click(addTask);
+  $('#name').keyup(function(e){
+      if (e.keyCode === 13) {
+          addTask();
+      }
+  });
+
+  // correct approach
+  $('.done-btn').click(function() {
+    $(this).parent('li').addClass('done');
+  });
+
+  $('.cancel-btn').click(function() {
+    $(this).parent('li').fadeOut();
+  });
+
+  alert(localStorage["tasks"]);
 
 });
 
