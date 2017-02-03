@@ -12,9 +12,6 @@ $(document).ready(function() {
   var hiddencookie = readCookie('hidecookie');
   var blurrycookie = readCookie('blurrycookie');
 
-  console.log(hiddencookie);
-  console.log(blurrycookie);
-
   if ((hiddencookie) == null) {
     if ((blurrycookie) == null) {
       createCookie('hidecookie','hidecookie',7);
