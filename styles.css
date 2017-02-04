@@ -7,7 +7,7 @@
   display: none;
 }
 
-.userContentWrapper:hover {
+.fbUserContent:hover {
   filter: blur(0px) !important;
   opacity: 1 !important;
 }
