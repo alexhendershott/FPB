@@ -265,7 +265,7 @@ input[type="radio"] {
   height: auto;
   position: absolute;
   z-index: 9999;
-  width: 200px;
+  width: 206px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
   border-radius: 4px;
   color: #333;
@@ -275,6 +275,8 @@ input[type="radio"] {
   display: none;
   right: 26px;
   top: 28px;
+  overflow: scroll;
+  padding-bottom: 0px;
 }
 
 .cog-window input[type=text] {
@@ -301,8 +303,8 @@ input[type="radio"] {
   top: 65px;
 }
 
-.cog-window a {
-  color: red;
+.cog-window #deleteAllKeywords {
+  color: #f44336;
 }
 
 .cog-window ul {
@@ -313,6 +315,10 @@ input[type="radio"] {
 .cog-window li {
   margin-top: 2px;
   margin-bottom: 2px;
+  max-width: 50%;
+  width: 45%;
+  padding-right: 8px;
+  float: left;
 }
 
 a.cancel-btn {
@@ -322,7 +328,7 @@ a.cancel-btn {
   vertical-align: text-bottom;
   color: rgba(0,0,0,.3);
   position: relative;
-  top: -1px;
+  top: 0px;
   text-decoration: none;
 }
 
@@ -385,4 +391,28 @@ a.cancel-btn:hover {
   margin-top: 6px;
   text-decoration: underline;
   margin-top: 0px;
+}
+
+/* Let's get this party started */
+.cog-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.cog-window::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.3);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+/* Handle */
+.cog-window::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.2);
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.5);
+}
+
+.cog-window::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0,0,0,0.4);
 }

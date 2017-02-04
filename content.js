@@ -1,8 +1,31 @@
-// Array for Political Keywords to Block
-var arr = localStorage["tasks"];
+// Default Array for Political Keywords to Block
+var arr = [
+'Trump', 'Trümp', 'Obama', 'Hillary', 'Clinton', 'Bush', 'Politics', 'politics', 'political',
+'President', 'Democrat', 'Republican', 'Democrats', 'Republicans', 'Pence', 'White House', 'Immigration', 'immigration',
+'Melania', 'Ivanka', 'U.S.', 'House of Representatives', 'Constitution', 'Green Card', 'Supreme Court', 'Government',
+'government'
+];
+
+// if (localStorage['tasks']) {
+//     var arr_user = JSON.parse(localStorage.getItem("tasks"));
+// }else {
+//     var arr_user = [];
+// }
+// User Array for Keywords to Block
+// var arr_user = JSON.parse(localStorage.getItem("tasks"));
+// Merge Arrays together for Filtering
+// var arr = $.merge( $.merge( [], arr_default ), arr_user );
+// var arr = JSON.parse(arr_merge);
 
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
+
+  // console.log("Array Default: " + arr_default);
+  // console.log("Array User (Local Storage): " + arr_user);
+  // console.log("Arrays Merged: " + arr);
+
+  // console.log(arr.length);
+
 
   var hiddencookie = readCookie('hidecookie');
   var blurrycookie = readCookie('blurrycookie');
@@ -18,7 +41,7 @@ $(document).ready(function() {
       $('body').hasClass('timelineLayout')) {
 
       // Create Action Bar
-      $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='navbar-actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='cog'></span><span>|</span></div> <div class='cog-window'> <span class='tip-title'>Blocked Keywords</span> <span class='tip-subtitle'>Add or remove a keyword below.</span> <input type='text' id='name' placeholder='New Keyword'> <a href='#' id='add-btn'>Add</a> <ul id='list'> </ul> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
+      $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='navbar-actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='cog'></span><span>|</span></div> <div class='cog-window'> <span class='tip-title'>Custom Blocked Keywords</span> <span class='tip-subtitle'>Add Keywords Below or <a id='deleteAllKeywords'>Delete All</a>.</span> <input type='text' id='name' placeholder='New Keyword'> <a href='#' id='add-btn'>Add</a> <ul id='list'> </ul> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
 
       // Hide Posts and Set Switch Position
       var x = readCookie('hidecookie')
@@ -80,10 +103,11 @@ $(document).ready(function() {
       });
   }
 
+  // Local Storage for Keywords
   function appendTaskToList(val) {
-    $('#list').append("<li>" + val + "  <a href='#' class='cancel-btn'>+</a></li>");
+    $('#list').append("<li>" + val);
+    // $('#list').append("<li>" + val + "  <a href='#' class='cancel-btn'>+</a></li>");
   }
-
 
   if (localStorage['tasks']) {
       var tasks = JSON.parse(localStorage['tasks']);
@@ -119,16 +143,11 @@ $(document).ready(function() {
       }
   });
 
-  // correct approach
-  $('.done-btn').click(function() {
-    $(this).parent('li').addClass('done');
+  $('#deleteAllKeywords').click(function () {
+    window.localStorage.clear();
+    $('#list').html("");
+    return false;
   });
-
-  $('.cancel-btn').click(function() {
-    $(this).parent('li').fadeOut();
-  });
-
-  alert(localStorage["tasks"]);
 
 });
 
@@ -171,13 +190,13 @@ setInterval(function() {
 
         var c = readCookie('hidecookie')
         if (c) {
-          var hiddenItems = $('.hidden-post').length
+          var hiddenItems = $('.hidden-post').length;
           $('.blocked-posts-num').html(hiddenItems);
         }
 
         var d = readCookie('blurrycookie')
         if (d) {
-          var blurredItems = $('.blurred-post').length
+          var blurredItems = $('.blurred-post').length;
           $('.blocked-posts-num').html(blurredItems);
         }
     }
