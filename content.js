@@ -144,10 +144,20 @@ $(document).ready(function() {
       $('#name').val("").focus();
   }
 
-  $('#add-btn').click(addTask);
+  // Check if Keyword Entry is Empty and Submit via Add Btn or Enter
+  $("#add-btn").click(function() {
+    if ( $.trim( $('#name').val() ) == '' ) {
+    } else {
+      addTask();
+    }
+  });
+
   $('#name').keyup(function(e){
       if (e.keyCode === 13) {
+        if ( $.trim( $('#name').val() ) == '' ) {
+        } else {
           addTask();
+        }
       }
   });
 
