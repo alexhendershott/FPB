@@ -1,3 +1,23 @@
+/* Facebook Hacks */
+
+#globalContainer {
+  top: 34px;
+}
+
+.stickyHeaderWrap {
+  display: none !important;
+}
+
+._2t-d {
+  min-width: 1016px;
+}
+
+body.timelineLayout #contentCol {
+  margin-top: 20px;
+}
+
+/* Blurry and Hidden Posts */
+
 .blurred-post {
   filter: blur(5px);
   opacity: .3;
@@ -18,7 +38,7 @@
   left: 0;
   z-index: 10;
   width: 100%;
-  background: #304a80;
+  background: #2f4b85;
   height: auto;
   padding: 6px;
   border-radius: 0px 4px 4px 0px;
@@ -39,14 +59,6 @@
   cursor: pointer;
 }
 
-#globalContainer {
-  top: 34px;
-}
-
-.stickyHeaderWrap {
-  display: none !important;
-}
-
 .govt {
   background: url("https://s3.amazonaws.com/nopolitics-public/government.svg") no-repeat;
   display: block;
@@ -54,6 +66,33 @@
   width: 27px;
   float: left;
   margin-right: 10px;
+}
+
+.cog {
+  background: url("https://s3.amazonaws.com/nopolitics-public/cog.svg") no-repeat 10px 2px;
+  display: block;
+  float: left;
+  margin-left: 38px;
+  height: 28px;
+  width: 37px;
+  background-size: 60%;
+  opacity: .8;
+}
+
+.cog-active {
+  background: url("https://s3.amazonaws.com/nopolitics-public/cog-active.svg") no-repeat 10px 2px;
+  display: block;
+  float: left;
+  margin-left: 38px;
+  height: 28px;
+  width: 37px;
+  background-size: 60%;
+  opacity: 1;
+}
+
+.cog:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .layout {
@@ -68,17 +107,13 @@
   vertical-align: top !important;
 }
 
-._2t-d {
-  min-width: 1016px;
-}
-
-.actions {
+.navbar-actions {
   float: right;
   margin-right: 18px;
   position: relative;
 }
 
-.actions a {
+.navbar-actions a {
   color: white;
   text-decoration: none;
 }
@@ -87,7 +122,7 @@
   border: 0px !important;
 }
 
-/* ---------- GENERAL ---------- */
+/* General */
 
 input {
     font-family: inherit;
@@ -101,7 +136,7 @@ input[type="radio"] {
     padding: 0;
 }
 
-/* ---------- SWITCH ---------- */
+/* Switch */
 
 .switch {
 	background: #fff;
@@ -198,18 +233,154 @@ input[type="radio"] {
 
 .tip {
   float: left;
-  margin-left: 40px;
+  margin-left: 5px;
 }
 
 .tip:hover {
   cursor: pointer;
 }
 
-.tip span {
-  font-size: 18px;
+.tip span, .cog span {
+  font-size: 16px;
   color: transparent;
-  border-left: 1px solid #233967;
+  border-left: 1px solid #294174;
 }
+
+/* Cog Window */
+
+.cog-window {
+  background: white;
+  max-height: 300px;
+  height: auto;
+  position: absolute;
+  z-index: 9999;
+  width: 208px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+  border-radius: 4px;
+  color: #333;
+  padding: 16px 20px 16px 20px;
+  line-height: 15px;
+  text-align: center;
+  display: none;
+  right: 26px;
+  top: 28px;
+  padding-bottom: 0px;
+  padding-top: 22px;
+}
+
+.cog-window input[type=text] {
+  height: 25px;
+  padding-left: 8px;
+  margin-bottom: 6px;
+  width: 186px;
+  outline: none;
+  margin-top: 4px;
+  border: 1px solid #dfdfdf;
+}
+
+.cog-window input[type=text]:focus {
+  border: 1px solid #4080ff;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(64,128,255,.8);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(64,128,255,.8);
+  box-shadow: 0px 0px 5px 0px rgba(64,128,255,.8);
+}
+
+.cog-window #add-btn {
+  color: #5d92ff;
+  position: absolute;
+  right: 34px;
+  top: 70px;
+}
+
+.cog-window ul {
+  text-align: left;
+  padding: 2px;
+}
+
+.cog-window li {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  max-width: 100%;
+  width: 100%;
+  float: left;
+}
+
+.cog-window li:last-of-type {
+  padding-bottom: 10px;
+}
+
+.cog-title {
+  font-size: 14px !important;
+  color: #333333;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.cog-subtitle {
+  font-size: 12px !important;
+  color: #999999;
+  display: block;
+  margin-bottom: 6px;
+}
+
+#list {
+  overflow-y: scroll;
+  max-height: 165px;
+  height: auto;
+  padding-left: 12px;
+  padding-right: 36px;
+  position: relative;
+  left: -6px;
+}
+
+.refresh {
+  padding: 8px 6px 8px 6px;
+  background: #e9ebee;
+  border-radius: 0px;
+  color: #92969d;
+  margin-bottom: 4px;
+  margin-top: 2px;
+}
+
+.buttons {
+  margin: 4px;
+}
+
+.save {
+  width: 96px;
+  background: rgba(64, 128, 255,.9);
+  display: block;
+  float: left;
+  padding: 10px 0px 10px 0px;
+  border-radius: 4px;
+  color: white;
+  margin-bottom: 16px;
+  margin-right: 2px;
+}
+
+.save:hover {
+  cursor: pointer;
+  background: rgba(64, 128, 255,1);
+}
+
+.reset {
+  width: 98px;
+  background: rgba(238, 83, 80, .9);
+  display: block;
+  float: left;
+  padding: 10px 0px 10px 0px;
+  border-radius: 4px;
+  color: white;
+  margin-bottom: 16px;
+  margin-left: 2px;
+}
+
+.reset:hover {
+  cursor: pointer;
+  background: rgba(238, 83, 80, 1);
+}
+
+/* Tipping */
 
 .tip-window {
   background: white;
@@ -242,10 +413,6 @@ input[type="radio"] {
   margin-bottom: 6px;
 }
 
-.dollars {
-
-}
-
 .dollars a {
   font-size: 14px !important;
   color: #4080ff;
@@ -276,4 +443,26 @@ input[type="radio"] {
   margin-top: 6px;
   text-decoration: underline;
   margin-top: 0px;
+}
+
+/* Cog Window Scrollbars */
+#list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.3);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#list::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.2);
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.5);
+}
+
+#list::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0,0,0,0.6);
 }

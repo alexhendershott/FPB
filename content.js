@@ -1,13 +1,29 @@
-// Array for Political Keywords to Block
-var arr = [
-'Trump', 'Trümp', 'Obama', 'Hillary', 'Clinton', 'Bush', 'Politics', 'politics', 'political',
-'President', 'Democrat', 'Republican', 'Democrats', 'Republicans', 'Pence', 'White House', 'Immigration', 'immigration',
-'Melania', 'Ivanka', 'U.S.', 'House of Representatives', 'Constitution', 'Green Card', 'Supreme Court', 'Government',
-'government'
+// Default Array for Political Keywords to Block
+var arr_default = [
+  'Trump', 'Trümp', 'Obama', 'Hillary', 'Clinton', 'Bush', 'Politics', 'politics',
+  'Political', 'political', 'President', 'president', 'Democrat', 'Republican',
+  'Democrats', 'Republicans', 'Pence', 'White House', 'Immigration', 'immigration',
+  'U.S.', 'House of Representatives', 'Constitution', 'Green Card', 'Supreme Court',
+  'Government', 'government'
 ];
+
+// If User has Added Custom Keywords, Set them to Var
+if (localStorage['keywords']) {
+  var arr_user = JSON.parse(localStorage.getItem("keywords"));
+} else {
+  // Workaround for Null Cases ¯\_(ツ)_/¯
+  var arr_user = ["Donald"];
+}
+
+// Merge Arrays together for Filtering
+var arr = $.merge( $.merge( [], arr_default ), arr_user );
 
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
+
+  console.log("Array Default: " + arr_default);
+  console.log("Array User (Local Storage): " + arr_user);
+  console.log("Arrays Merged: " + arr);
 
   var hiddencookie = readCookie('hidecookie');
   var blurrycookie = readCookie('blurrycookie');
@@ -22,8 +38,8 @@ $(document).ready(function() {
   if ($('body').hasClass('home') ||
       $('body').hasClass('timelineLayout')) {
 
-      // Create Action Bar
-      $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
+        // Create Action Bar
+        $('body').prepend("<div class='blurred-posts-count'> <div class='layout'> <span class='govt'></span> Political Posts Blocked: <span class='blocked-posts-num'>--</span> <div class='navbar-actions'> <div class='switch white'> <input type='radio' name='switch' id='switch-off' checked> <input type='radio' name='switch' id='switch-on'> <label for='switch-off'>Hide</label> <label for='switch-on'>Blur</label> <span class='toggle'></span> </div> <div class='cog'></span><span>|</span></div> <div class='cog-window'> <span class='cog-title'>Blocked Keywords</span> <span class='cog-subtitle'>Add custom keywords below.</span> <input type='text' id='name' placeholder='New Keyword'> <a href='#' id='add-btn'>Add</a> <ul id='list'> </ul> <div class='buttons'> <div id='saveAllKeywords' class='save'>Save</div> <div id='deleteAllKeywords' class='reset'>Reset</div> </div> </div> <div class='tip'><span>|</span> Tip</div> <div class='tip-window'> <span class='tip-title'>Enjoying the extension?</span> <span class='tip-subtitle'>Leave a tip.</span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span> <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span> <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span> </div> </div> </div></div>");
 
       // Hide Posts and Set Switch Position
       var x = readCookie('hidecookie')
@@ -77,7 +93,73 @@ $(document).ready(function() {
       $(".tip").click(function() {
         $(".tip-window").toggle();
       });
+
+      // Settings Cog
+      $(".cog").click(function() {
+        $(this).toggleClass("cog-active");
+        $(".cog-window").toggle();
+      });
+
+      // Scrolling Cog Window and Not Entire Page
+      $('#list').on( 'mousewheel DOMMouseScroll', function (e) {
+        var e0 = e.originalEvent;
+        var delta = e0.wheelDelta || -e0.detail;
+
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+        e.preventDefault();
+      });
+
   }
+
+  // Local Storage for Keywords
+  function appendTaskToList(val) {
+    $('#list').append("<li>" + val);
+    // $('#list').append("<li>" + val + "  <a href='#' class='cancel-btn'>+</a></li>");
+  }
+
+  if (localStorage['keywords']) {
+      var keywords = JSON.parse(localStorage['keywords']);
+  }else {
+      var keywords = [];
+  }
+
+  for(var i=0;i<keywords.length;i++) {
+      appendTaskToList(keywords[i]);
+  }
+
+  var addTask = function(){
+      // get value from #name input
+      var val = $('#name').val();
+
+      // add the task to the array
+      keywords.push(val);
+
+      // save to local storage
+      localStorage["keywords"] = JSON.stringify(keywords);
+
+      // append the name to the list
+      appendTaskToList(val);
+
+      // reset the input field and focus it.
+      $('#name').val("").focus();
+  }
+
+  $('#add-btn').click(addTask);
+  $('#name').keyup(function(e){
+      if (e.keyCode === 13) {
+          addTask();
+      }
+  });
+
+  $('#deleteAllKeywords').click(function () {
+    window.localStorage.clear();
+    $('#list').html("");
+    return false;
+  });
+
+  $('#saveAllKeywords').click(function () {
+    location.reload();
+  });
 
 });
 

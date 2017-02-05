@@ -2,7 +2,7 @@
   <div class='layout'>
     <span class='govt'></span>
     Political Posts Blocked: <span class='blocked-posts-num'>--</span>
-    <div class='actions'>
+    <div class='navbar-actions'>
       <div class='switch white'>
   			<input type='radio' name='switch' id='switch-off' checked>
   			<input type='radio' name='switch' id='switch-on'>
@@ -10,6 +10,19 @@
   			<label for='switch-on'>Blur</label>
   			<span class='toggle'></span>
 		  </div>
+      <div class='cog'></span><span>|</span></div>
+      <div class='cog-window'>
+        <span class='cog-title'>Blocked Keywords</span>
+        <span class='cog-subtitle'>Add custom keywords below.</span>
+        <input type='text' id='name' placeholder='New Keyword'>
+        <a href='#' id='add-btn'>Add</a>
+        <ul id='list'>
+        </ul>
+        <div class='buttons'>
+          <div id='saveAllKeywords' class='save'>Save</div>
+          <div id='deleteAllKeywords' class='reset'>Reset</div>
+        </div>
+      </div>
       <div class='tip'><span>|</span> Tip</div>
       <div class='tip-window'>
         <span class='tip-title'>Enjoying the extension?</span>
@@ -17,7 +30,7 @@
         <span class='dollars'><a href='https://www.paypal.me/alexhendershott/1'>$1.00</a></span>
         <span class='dollars'><a href='https://www.paypal.me/alexhendershott/5'>$5.00</a></span>
         <span class='dollars'><a href='https://www.paypal.me/alexhendershott/10'>$10.00</a></span>
-        <span class='tip-contact'>Improvement ideas? <a href="mailto:alex.hendershott@gmail.com">Email me</a>.</span>
+        <span class='tip-contact'>Improvement ideas? <a href='mailto:alex.hendershott@gmail.com'>Email me</a>.</span>
       </div>
     </div>
   </div>
