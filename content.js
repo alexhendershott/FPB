@@ -21,9 +21,9 @@ var arr = $.merge( $.merge( [], arr_default ), arr_user );
 // Document Ready - Blur Posts, Create Action Bar, Setup Switch and Tip Window
 $(document).ready(function() {
 
-  console.log("Array Default: " + arr_default);
-  console.log("Array User (Local Storage): " + arr_user);
-  console.log("Arrays Merged: " + arr);
+  // console.log("Array Default: " + arr_default);
+  // console.log("Array User (Local Storage): " + arr_user);
+  // console.log("Arrays Merged: " + arr);
 
   var hiddencookie = readCookie('hidecookie');
   var blurrycookie = readCookie('blurrycookie');
