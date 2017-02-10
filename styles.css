@@ -12,6 +12,10 @@
   min-width: 1016px;
 }
 
+._2s1x ._2s1y {
+  border-bottom: 0px solid #1a3c82 !important;
+}
+
 body.timelineLayout #contentCol {
   margin-top: 20px;
 }
@@ -38,7 +42,7 @@ body.timelineLayout #contentCol {
   left: 0;
   z-index: 10;
   width: 100%;
-  background: #2f4b85;
+  background: #325395;
   height: auto;
   padding: 6px;
   border-radius: 0px 4px 4px 0px;
