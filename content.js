@@ -113,8 +113,8 @@ $(document).ready(function() {
 
   // Local Storage for Keywords
   function appendTaskToList(val) {
-    $('#list').append("<li>" + val);
-    // $('#list').append("<li>" + val + "  <a href='#' class='cancel-btn'>+</a></li>");
+    // $('#list').append("<li>" + val);
+    $('#list').append("<li>" + val + "  <a href='#' class='delete-btn'></a></li>");
   }
 
   if (localStorage['keywords']) {
@@ -159,6 +159,19 @@ $(document).ready(function() {
           addTask();
         }
       }
+  });
+
+  // Delete Individual Keywords
+  // Click #list li to Retrieve Index ID
+  $("#list li a").click(function() {
+    $(this).parent().hide();
+    var LIID = $(this).parent().index();
+    // Delete Individual Keyword
+    var json = JSON.parse(localStorage["keywords"]);
+    for (i=0;i<json.length;i++) {
+      if (i == LIID) json.splice(i,1);
+      localStorage["keywords"] = JSON.stringify(json);
+    }
   });
 
   $('#deleteAllKeywords').click(function () {

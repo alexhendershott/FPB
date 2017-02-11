@@ -350,6 +350,23 @@ input[type="radio"] {
   margin: 4px;
 }
 
+a.delete-btn {
+  background: url("https://s3.amazonaws.com/nopolitics-public/delete-word.svg") no-repeat 10px 2px;
+  display: inline-block;
+  float: none;
+  background-size: 100%;
+  height: 12px;
+  width: 12px;
+  background-position: 0px 0px;
+  opacity: .3;
+  margin-left: -1px;
+  vertical-align: -2px;
+}
+
+a.delete-btn:hover {
+  opacity: .8;
+}
+
 .save {
   width: 96px;
   background: rgba(64, 128, 255,.9);
