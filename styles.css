@@ -31,7 +31,7 @@ body.timelineLayout #contentCol {
   display: none;
 }
 
-.fbUserContent:hover {
+.userContentWrapper:hover {
   filter: blur(0px) !important;
   opacity: 1 !important;
 }
