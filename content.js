@@ -49,9 +49,9 @@ $(document).ready(function() {
 
         var i=0;
         for (; i<arr.length; i++) {
-          $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
-            $(this).closest('div.userContentWrapper').addClass('hidden-post');
-            $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+          $("div.fbUserContent:contains('"+arr[i]+"')").each(function() {
+            $(this).closest('div.fbUserContent').addClass('hidden-post');
+            $(this).closest('div.fbUserContent').parent().parent().addClass("noborder");
           });
         }
       }
@@ -64,9 +64,9 @@ $(document).ready(function() {
 
         var i=0;
         for (; i<arr.length; i++) {
-          $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
-            $(this).closest('div.userContentWrapper').addClass('blurred-post');
-            $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+          $("div.fbUserContent:contains('"+arr[i]+"')").each(function() {
+            $(this).closest('div.fbUserContent').addClass('blurred-post');
+            $(this).closest('div.fbUserContent').parent().parent().addClass("noborder");
           });
         }
       }
@@ -198,10 +198,10 @@ function doThisStuffOnScroll() {
     if (a) {
       var i=0;
       for (; i<arr.length; i++) {
-        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
-          $(this).closest('div.userContentWrapper').removeClass('blurry-post');
-          $(this).closest('div.userContentWrapper').addClass('hidden-post');
-          $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+        $("div.fbUserContent:contains('"+arr[i]+"')").each(function() {
+          $(this).closest('div.fbUserContent').removeClass('blurry-post');
+          $(this).closest('div.fbUserContent').addClass('hidden-post');
+          $(this).closest('div.fbUserContent').parent().parent().addClass("noborder");
         });
       }
     }
@@ -210,10 +210,10 @@ function doThisStuffOnScroll() {
     if (b) {
       var i=0;
       for (; i<arr.length; i++) {
-        $("div.userContentWrapper:contains('"+arr[i]+"')").each(function() {
-          $(this).closest('div.userContentWrapper').removeClass('hidden-post');
-          $(this).closest('div.userContentWrapper').addClass('blurred-post');
-          $(this).closest('div.userContentWrapper').parent().parent().addClass("noborder");
+        $("div.fbUserContent:contains('"+arr[i]+"')").each(function() {
+          $(this).closest('div.fbUserContent').removeClass('hidden-post');
+          $(this).closest('div.fbUserContent').addClass('blurred-post');
+          $(this).closest('div.fbUserContent').parent().parent().addClass("noborder");
         });
       }
     }
